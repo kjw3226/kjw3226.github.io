@@ -1,5 +1,707 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>kjw3226-blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="kjw3226-blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="kjw3226-blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="kjw3226-blog"><meta property="og:url" content="http://kjw3226.github.io/"><meta property="og:site_name" content="kjw3226-blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://kjw3226.github.io/img/og_image.png"><meta property="article:author" content="kim Jae Won"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://kjw3226.github.io"},"headline":"kjw3226-blog","image":["http://kjw3226.github.io/img/og_image.png"],"author":{"@type":"Person","name":"kim Jae Won"},"publisher":{"@type":"Organization","name":"kjw3226-blog","logo":{"@type":"ImageObject","url":"http://kjw3226.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="kjw3226-blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-02-14T15:00:00.000Z" title="2022. 2. 15. 오전 12:00:00">2022-02-15</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-13T09:55:11.570Z" title="2022. 3. 13. 오후 6:55:11">2022-03-13</time></span><span class="level-item"><a class="link-muted" href="/categories/SQL/">SQL</a></span><span class="level-item">3 minutes read (About 423 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/02/15/postgre%20SQL-practice14/">postgre SQL-practice14</a></h1><div class="content"><p>‘예제 코드’는 여기서 다운 받아 실행하면 된다.</p>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>kjw3226-blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="kjw3226-blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="kjw3226-blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="kjw3226-blog"><meta property="og:url" content="http://kjw3226.github.io/"><meta property="og:site_name" content="kjw3226-blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://kjw3226.github.io/img/og_image.png"><meta property="article:author" content="kim Jae Won"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://kjw3226.github.io"},"headline":"kjw3226-blog","image":["http://kjw3226.github.io/img/og_image.png"],"author":{"@type":"Person","name":"kim Jae Won"},"publisher":{"@type":"Organization","name":"kjw3226-blog","logo":{"@type":"ImageObject","url":"http://kjw3226.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="kjw3226-blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-02-15T15:00:00.000Z" title="2022. 2. 16. 오전 12:00:00">2022-02-16</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-02-25T03:05:59.696Z" title="2022. 2. 25. 오후 12:05:59">2022-02-25</time></span><span class="level-item"><a class="link-muted" href="/categories/SQLD/">SQLD</a></span><span class="level-item">41 minutes read (About 6138 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/02/16/SQLD%20key%20theorem2/">SQLD key theorem2</a></h1><div class="content"><h1 id="SQLD-핵심정리2"><a href="#SQLD-핵심정리2" class="headerlink" title="SQLD 핵심정리2"></a>SQLD 핵심정리2</h1><table>
+<thead>
+<tr>
+<th>분류</th>
+<th>식별자</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>대표성여부</td>
+<td>주식별자</td>
+<td>엔터티 내에서 각 어커런스를 구분할 수 있는 구분자이며, 타 엔터티와 참조관계를 연결할 수 있는 식별자</td>
+</tr>
+<tr>
+<td>대표성여부</td>
+<td>보조식별자</td>
+<td>엔터티 내에서 각 어커런스를 구분할 수 있는 구분자이나 대표성을 가지지 못해 참조관계 연결을 못함</td>
+</tr>
+<tr>
+<td>스스로 생성여부</td>
+<td>내부식별자</td>
+<td>엔터티 내부에서 스스로 만들어지는 식별자</td>
+</tr>
+<tr>
+<td>스스로 생성여부</td>
+<td>외부식별자</td>
+<td>타 엔터티와의 관계를 통해 타 엔터티로부터 받아오는 식별자</td>
+</tr>
+<tr>
+<td>속성의 수</td>
+<td>단일식별자</td>
+<td>하나의 속성으로 구성된 식별자</td>
+</tr>
+<tr>
+<td>속성의 수</td>
+<td>복합식별자</td>
+<td>둘 이상의 속성으로 구성된 식별자</td>
+</tr>
+<tr>
+<td>대체여부</td>
+<td>본질식별자</td>
+<td>업무에 의해 만들어지는 식별자</td>
+</tr>
+<tr>
+<td>대체여부</td>
+<td>인조식별자</td>
+<td>업무적으로 만들어지지는 않지만 원조식별자가 복잡한 구성을 가지고 있기 때문에 인위적으로 만든 식별자</td>
+</tr>
+</tbody></table>
+<p>▶ 성능데이터모델링 : 데이터베이스 성능 향상을 목적으로 설계단계의 데이터 모델링 때부터 성능과 관련된 사항이 데이터 모델링에 반영될 수 있도록 하는 것.</p>
+<p><strong>&lt;반정규화&gt;</strong></p>
+<ul>
+<li>첫 번째 : 데이터모델링을 할 때 정규화를 정확하게 수행한다.</li>
+<li>두 번째 : 데이터베이스 용량산정을 수행한다.</li>
+<li>세 번째 : 데이터베이스에 발생되는 트랜잭션의 유형을 파악한다.</li>
+<li>네 번째 : 용량과 트랜잭션의 유혀에 따라 반정규화를 수행한다.</li>
+<li>다섯 번째 : 이력모델의 조정, PK&#x2F;FK 조정, 슈퍼타입&#x2F;서브타임 조정 등을 수행한다.</li>
+<li>여섯 번째 : 성능관점에서 데이터모델을 검증한다.</li>
+</ul>
+<p>▶ 함수적 종속 : 어떠한 릴레이션에서 속성들의 부분 집합을 X, Y라 할 때 특정 튜플에서 X의 값이 Y의 값을 함수적으로 결정 한다면 Y가 X에 함수적으로 종속 되었다고 합니다.</p>
+<p><strong>&lt;함수적 종속의 추론 규칙&gt;</strong></p>
+<ul>
+<li>재귀 규칙 : Y가 X의 부분 집합이면 X → Y 이다.</li>
+</ul>
+<p>-증가 규칙 : X → Y 이면 WX → WY 이고 WX → Y 이다.<br>-이행 규칙 : X → Y 이고 Y → Z 이면 X → Z 이다.<br>-유니온 규칙 : X → Y 이고 X → Z 이면 X → YZ 이다.<br>-분해 규칙 : X → YZ 이면 X → Y와 X → Z 이다.<br>-가이행 규칙 : 만일 W → X 이고 XY → Z 이면 WY → Z 이다.</p>
+<p>▶ 중복속성에 대한 분리가 1차 정규화의 대상이 되며, 로우단위의 중복도 1차 정규화의 대상이 되지만 칼럼 단위로 중복이 되는 경우도 1차 정규화의 대상이다.</p>
+<p><strong>&lt;반정규화를 고려 할 때의 판단요소&gt;</strong><br>▶ 다량 데이터 탐색의 경우 인덱스가 아닌 파티션 및 데이터 클러스터링 등의 다양한 물리 저장 기법을 활용하여 성능 개선을 유도할 수 있다. 다만, 하나의 결과셋을 추출하기 위해 다량의 데이터를 탐색하는 처리가 반복적으로 빈번하게 발생한다면 이때는 반정규화를 고려하는 것이 좋다.</p>
+<p>▶ 이전 또는 이후 위치의 레코드에 대한 탐색은 window function으로 접근 가능하다.</p>
+<p>▶ 집계 테이블 이외에도 다양한 유형(다수 테이블의 키 연결 테이블 등)에 대하여 반정규화 테이블 적용이필요할 수  있다.</p>
+<ul>
+<li><strong>반정규화가 적용 가능 할 때 :</strong> 반정규화의 기법은 테이블, 속성, 관계에 대해서 반정규화를 적용할 수 있으며, 하나의 테이블의 전체 컬럼 중 자주 이용하는 집중화된 컬럼들이 있을 때 디스크 I&#x2F;O를 줄이기 위해 해당 컬럼들을 별도로 모아 놓은 반정규화 기법은 테이블 추가 반정규화 기법 중 부분 테이블 추가에 해당한다.</li>
+</ul>
+<p><strong>&lt;반정규화 절차&gt;</strong></p>
+<ol>
+<li><strong>반정규화 대상조사</strong></li>
+</ol>
+<ul>
+<li>범위처리빈도수 조사</li>
+<li>대량의 범위 처리 조사</li>
+<li>통계성 프로세스 조사</li>
+<li>테이블 조인 개수</li>
+</ul>
+<ol>
+<li><strong>다른 방법유도 검토</strong></li>
+</ol>
+<ul>
+<li>뷰(VIEW) 테이블</li>
+<li>클러스터링 적용</li>
+<li>인덱스의 조정</li>
+<li>응용애플리케이션</li>
+</ul>
+<ol>
+<li><strong>반정규화 적용</strong></li>
+</ol>
+<ul>
+<li>테이블 반정규화</li>
+<li>속성의 반정규화</li>
+<li>관계의 반정규화</li>
+</ul>
+<p>&lt;**반정규화의 대상에 대해 다른 방법으로 처리**&gt;</p>
+<ul>
+<li><p>지나치게 많은 조인(JOIN)이 걸려 데이터를 조회하는 작업이 기술적으로</p>
+<pre><code>어려울 경우 뷰(VIEW)를 사용하면 이를 해결할 수도 있다.
+</code></pre>
+</li>
+<li><p>대량의 데이터 처리나 부분처리에 의해 성능이 저하되는 경우에 클러스터링을</p>
+<pre><code>적용하거나 인덱스를 조정함으로써 성능을 향상시킬 수 있다.
+</code></pre>
+</li>
+<li><p>대량의 데이터는 Primary Key의 성격에 따라 부분적인 테이블로 분리할 수 있다.</p>
+<pre><code>즉 파티셔닝 기법(Partitioning)이 적용되어 성능저하를 방지할 수 있다.
+</code></pre>
+</li>
+<li><p>응용 애플리케이션에서 로직을 구사하는 방법을 변경함으로써 성능을 향상 시킬 수 있다.</p>
+</li>
+</ul>
+<p>&lt;**슈퍼&#x2F;서브 타입 데이터 모델의 변환기술**&gt;</p>
+<ul>
+<li><p>개별로 발생되는 트랜잭션에 대해서는 개별 테이블로 구성</p>
+</li>
+<li><p>슈퍼타입 + 서브타입에 대해 발생되는 트랜잭션에 대해서는 슈퍼타입 + 서브타입 테이블로 구성</p>
+</li>
+<li><p>전체를 하나로 묶어 트랜잭션이 발생할 때는 하나의 테이블로 구성</p>
+</li>
+</ul>
+<p>&lt;PK 순서를 결정하는 기준&gt;</p>
+<ul>
+<li><p>인덱스 정렬구조를 이해한 상태에서 인덱스를 효율적으로 이용할 수 있도록 PK순서를 지정.</p>
+</li>
+<li><p>인덱스의 특징은 여러 개의 속성이 하나의 인덱스로 구성되어 있을 때 앞쪽에 위치한 속성의 값이 비교자로 있어야 인덱스가 좋은 효율을 나타낼 수 있다.</p>
+</li>
+<li><p>앞쪽에 위치한 속성 값이 가급적 ‘&#x3D;’ 아니면 최소한 범위 ‘BETWEEN’,’&lt;&gt;’가 들어와야 인덱스를 이용할 수 있다.</p>
+</li>
+</ul>
+<p>&lt;**분산 데이터베이스의 장단점**&gt;</p>
+<p>&lt;**장점**&gt;</p>
+<ul>
+<li><p>지역 자치성, 점증적 시스템 용량 확장</p>
+</li>
+<li><p>신뢰성과 가용성</p>
+</li>
+<li><p>효용성과 융통성</p>
+</li>
+<li><p>빠른 응답 속도와 통신비용 절감</p>
+</li>
+<li><p>데이터의 가용성과 신뢰성 증가</p>
+</li>
+<li><p>시스템 규모의 적절한 조절</p>
+</li>
+<li><p>각 지역 사용자의 요구 수용 증대</p>
+</li>
+</ul>
+<p>&lt;**단점**&gt;</p>
+<ul>
+<li><p>소프트웨어 개발 비용</p>
+</li>
+<li><p>오류의 잠재성 증대</p>
+</li>
+<li><p>처리 비용의 증대</p>
+</li>
+<li><p>설계, 관리의 복잡성과 비용</p>
+</li>
+<li><p>불규칙한 응답 속도</p>
+</li>
+<li><p>통제의 어려움</p>
+</li>
+<li><p>데이터 무결성에 대한 위협</p>
+</li>
+</ul>
+<p><strong>&lt;SQL 문장들의 종류&gt;</strong></p>
+<table>
+<thead>
+<tr>
+<th>명령어의 종류</th>
+<th>명령어</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>데이터 조작어(DML)</td>
+<td>SELECT</td>
+<td>데이터베이스에 들어있는 데이터를조회하거나 검색하기 위한 명령어를 말하는 것으로 RETRIEVE라고도 한다.</td>
+</tr>
+<tr>
+<td>데이터 조작어(DML)</td>
+<td>INSERT  UPDATE   DELETE</td>
+<td>데이터베이스의 테이블에 들어있는 데이터에 변형을 가하는 종류의 명령어들을 말한다. 예를 들어 데이터를 테이블에 새로운 행을 집어넣거나, 원하지 않는 데이터를 삭제하거나 수정하는 것들의 명령어들을 DML이라고 부른다.</td>
+</tr>
+<tr>
+<td>데이터 정의어(DDL)</td>
+<td>CREATE     ALTER                             DROP       RENAME</td>
+<td>테이블과 같은 데이터 구조를 정의하는데 사용되는 명령어들로 그러한 구조를 생성하거나 변경하거나 삭제하거나 이름을 바꾸는 데이터 구조와 관련된 명령어들을 DDL이라고 부른다.</td>
+</tr>
+<tr>
+<td>데이터 제어어(DCL)</td>
+<td>GRANT     REVOKE</td>
+<td>데이터베이스에 접근하고 객체들을 사용하도록 권한을 주고 회수하는 명령어를 DCL이라고 부른다.</td>
+</tr>
+<tr>
+<td>트랜잭션 제어어(TCL)</td>
+<td>COMMIT   ROLLBACK</td>
+<td>논리적인 작업의 단위를 묶어서 DML에 의해 조작된 결과를 작업단위(트랜잭션) 별로 제어하는 명령어를 말한다.</td>
+</tr>
+</tbody></table>
+<p><strong>&lt;테이블 칼럼에 대한 정의 변경&gt;</strong></p>
+<ul>
+<li><p>[Oracle]</p>
+<p>ALTER TABLE</p>
+<p>  테이블명</p>
+<p>MODIFY</p>
+<p>  (칼럼명1 데이터 유형</p>
+<p>  [DEFAULT 식]</p>
+<p>  [NOT NULL],</p>
+<p>  칼럼명2 데이터 유형….);</p>
+</li>
+<li><p>[SQL server]</p>
+<p>ALTER TABLE</p>
+<p>  테이블명</p>
+<p>ALTER</p>
+<p>  (칼럼명1 데이터 유형</p>
+<p>  [DEFAULT식] [NOT NULL],</p>
+<p>  칼럼명2 데이터 유형….);</p>
+</li>
+</ul>
+<p>▶ <strong>NULL</strong> : 공백(BLANK, ASCII 코드 32번)이나 숫자 0(ZERO, ASCll 48)과는 전혀 다른 값이며,</p>
+<p>조건에 맞는 데이터가 없을 때의 공집합과도 다르다.</p>
+<p>‘NULL’은 ‘아직 정의되지 않은 미지의 값’이거나 ‘현재 데이터를 입력하지 못하는 경우’를 의미한다.</p>
+<p><strong>&lt;제약조건의 종류&gt;</strong></p>
+<ul>
+<li><p>PRIMARY KEY(기본키)</p>
+</li>
+<li><p>UNIQUE KEY(고유키)</p>
+</li>
+<li><p>NOT NULL</p>
+</li>
+<li><p>CHECK</p>
+</li>
+<li><p>FOREIGN KEY(외래키)</p>
+</li>
+</ul>
+<p><strong>&lt;테이블 생성의 주의사항&gt;</strong></p>
+<ul>
+<li><p>테이블명은 객체를 의미할 수 있는 적절한 이름을 사용한다.가능한 단수형을 권고한다.</p>
+</li>
+<li><p>테이블 명은 다른 테이블의 이름과 중복되지 않아야 한다.</p>
+</li>
+<li><p>한 테이블 내에서는 칼럼명이 중복되게 지정될 수 없다.</p>
+</li>
+<li><p>테이블 이름을 지정하고 각 칼럼들은 괄호 “()” 로 묶어 지정한다.</p>
+</li>
+<li><p>각 칼럼들은 콤마 “,” 로 구분되고, 테이블 생성문의 끝은 항상 세미콜론 “;”으로 끝난다.</p>
+</li>
+<li><p>칼럼에 대해서는 다른 테이블까지 고려하여 데이터베이스 내에서는 일관성 있게</p>
+</li>
+</ul>
+<p>사용하는 것이 좋다.(데이터 표준화 관점)</p>
+<ul>
+<li><p>칼럼 뒤에 데이터 유형은 꼭 지정되어야 한다.</p>
+</li>
+<li><p>테이블명과 칼럼명은 반드시 문자로 시작해야 하고, 벤더별로 길이에 대한 한계가 있다.</p>
+</li>
+<li><p>벤더에서 사전에 정의한 예약어(Reserved word)는 쓸 수 없다.</p>
+</li>
+<li><p>A-Z, a-Z, 0-9, _, $, # 문자만 허용된다.</p>
+</li>
+</ul>
+<p><strong>&lt;테이블의 불필요한 칼럼 삭제&gt;</strong></p>
+<p>ALTER TABLE</p>
+<p>   테이블명</p>
+<p>DROP COLUMN</p>
+<p>  삭제할 칼럼명;</p>
+<p><strong>&lt;테이블에 데이터를 입력하는 두가지 유형&gt;</strong></p>
+<p>INSERT INTO 테이블 명</p>
+<p>   (COLUMN_LIST)</p>
+<p>   VALUE</p>
+<p>   (COLUMN_LIST에 넣을 VALUE_LIST);</p>
+<p>INSERT INTO 테이블명</p>
+<p>   VALUES</p>
+<p>   (전체 COLUMN에 넣을 VALUE_LIST);</p>
+<p><strong>&lt;입력된 데이터의 수정&gt;</strong></p>
+<p>UPDATE UP 테이블명 수정되어야 할 칼럼명 &#x3D; 수정되기를 원하는 새로운 값;</p>
+<p><strong>&lt;테이블에 입력된 데이터 조회&gt;</strong></p>
+<p>SELECT </p>
+<pre><code>[ALL/DISTINCT]
+
+보고 싶은 컬럼명,
+
+보고 싶은 컬럼명, ....
+</code></pre>
+<p>FROM  해당 컬럼들이 있는 테이블명;</p>
+<ul>
+<li><p>ALL: Defeult 옵션이므로 별도로 표시하지 않아도 된다. 중복된 데이터도 모두 출력.</p>
+</li>
+<li><p>DISTINCT : 중복된 데이터가 있는 경우 1건으로  처리해서 출력.</p>
+</li>
+</ul>
+<p>▶ <strong>TRUNCATE TABLE :</strong> TRUNCATE TABLE 은 테이블 자체가 삭제되는 것이 아니고, 해당 테이블에 들어있던 모든 행들이 제거되고 저장 공간을 재상용 가능하도록 해제한다. 테이블 구조를 완전히 삭제 하기 위해서는 DROP TABLE을 실행하면 된다.</p>
+<table>
+<thead>
+<tr>
+<th>DROP</th>
+<th>TRUNCATE</th>
+<th>DELETE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DDL</td>
+<td>DDL (일부 DML 성격 가짐)</td>
+<td>DML</td>
+</tr>
+<tr>
+<td>Rollback 불가능</td>
+<td>Rollback 불가능</td>
+<td>Commit 이전 Rollback 가능</td>
+</tr>
+<tr>
+<td>Auto Commit</td>
+<td>Auto Commit</td>
+<td>사용자 Commit</td>
+</tr>
+<tr>
+<td>테이블이 사용했던 Storage를      모두 Release</td>
+<td>테이블이 사용했던 Storage 중 최초 테이블 생성시 할당된 Storage만 남기고 Release</td>
+<td>데이터를 모두 Delete해도 사용했던 Storage는 Release되지 않음.</td>
+</tr>
+<tr>
+<td>테이블의 정의 자체를 완전히 삭제함.</td>
+<td>테이블을 최초 생성된 초기상태로 만듬</td>
+<td>데이터만 삭제</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>특성</th>
+<th>설 명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>원자성(atomicty)</td>
+<td>트랜잭션에서 정의된 연산들은 모두 성공적으로 실행되던지 아니면 전혀 실행되지   않은 상태로 남아 있어야 한다.(ALL or Nothing)</td>
+</tr>
+<tr>
+<td>일관성(consistency)</td>
+<td>트랜잭션이 실행 되기 전의 데이터베이스 내용이 잘못 되어 있지 않다면 트랜잭션이 실행된 이후에도 데이터베이스의 내용에 잘못이 있으면 안된다.</td>
+</tr>
+<tr>
+<td>고립성(isolation)</td>
+<td>트랜잭션이 실행되는 도중에 다른 트랜잭션의 영향을 받아 잘못된 결과를 만들어서는 안된다.</td>
+</tr>
+<tr>
+<td>지속성(durability)</td>
+<td>트랜잭션이 성공적으로 수행되면 그 트랜잭션이 갱신한 데이터베이스의 내용은 영구적으로 저장된다.</td>
+</tr>
+</tbody></table>
+<p>▶ <strong>롤백(Rollback) :</strong> 테이블 내 입력한 데이터나 수정한 데이터, 삭제한 데이터에 대하여 COMMIT         이전에는 변경 사항을 취소할 수 있는데 데이터베이스에서는 롤백(ROLLBACK) 기능을 사용한다.</p>
+<p>▶ BEGIN TRANSACTION (BEGIN TRAN 구문도 가능)으로 트랜잭션을 시작하고  COMMIT TRANSACTION(TRANSATION은 생략 가능) 또는 ROLLBALCK TRANSACTION(TRANSACTION은 생략 가능) 으로 트랜잭션을 종료한다. ROLLBALCK 구문을 만나면 최초의 BEGIN TRANSACTION 시점까지 모두 ROLLBACK이 수행된다.</p>
+<p>▶ <strong>저장점(SAVEPOINT) :</strong> 정의하면 롤백할 때 트랜잭션에 포함된 전체 작업을 롤백하는 것이 아니라 현 시점에서 SAVEPOINT까지 트랜잭션의 일부만 롤백할 수 있다.</p>
+<p>[Oracle] </p>
+<p>SAVEPOINT SVPT1; </p>
+<p>…..</p>
+<p>ROLLBACK TO SVPT1;</p>
+<p>[SQL Server]</p>
+<p>SAVE TRANSACTION </p>
+<pre><code>SVTR1;
+</code></pre>
+<p>……</p>
+<p>ROLLBACK</p>
+<pre><code> TRANSACTION
+
+ SVTR1;
+</code></pre>
+<p><strong>WHERE 절:</strong> FROM 절 다음에 위치하며, 조건식은 아래 내용으로 구성된다.</p>
+<ul>
+<li><p>칼럼(Column)명 (보통 조건식의 좌측에 위치)</p>
+</li>
+<li><p>비교 연산자</p>
+</li>
+<li><p>문자, 숫자, 표현식(보통 조건식의 우측에 위치)</p>
+</li>
+<li><p>비교 칼럼명(JOIN 사용시)</p>
+</li>
+</ul>
+<p><strong>&lt;연산자의 우선순위&gt;</strong></p>
+<ol>
+<li><p>괄호로 묶은 연산</p>
+</li>
+<li><p>부정 연산자(NOT)</p>
+</li>
+<li><p>비교 연산자(&#x3D;,&gt;,&gt; &#x3D;,&lt;, &lt; &#x3D;)와 SQL 비교 연산자(BETWEEN a AND b, IN(list), LIKE, IS NULL)</p>
+</li>
+<li><p>논리 연산자 충 AND, OR의 순으로 처리</p>
+</li>
+</ol>
+<p><strong>&lt;NULL의 연산&gt;</strong></p>
+<ul>
+<li><p>NULL 값과의 연산(+,-,*,&#x2F; 등)은 NULL 값을 리턴</p>
+</li>
+<li><p>NULL 값과의 비교연산(&#x3D;,&gt;,&gt; &#x3D;,&lt;,&lt; &#x3D;)은 거짓(FALSE)을 리턴</p>
+</li>
+<li><p>특정 값보다 크다, 적다라고 표현할 수 없음</p>
+</li>
+</ul>
+<p>&lt;부정 비교 연산자&gt;</p>
+<ul>
+<li><p>! &#x3D; : 같지 않다.</p>
+</li>
+<li><p>^&#x3D; : 같지않다.</p>
+</li>
+<li><p>&lt;&gt;:  같지 않다.(ISO 표준, 모든 운양체제에서 사용 가능)</p>
+</li>
+<li><p>NOT 칼럼명 &#x3D; : ~와 같지 않다.</p>
+</li>
+<li><p>NOT 칼럼명 &gt; : ~보다 크지 않다.</p>
+</li>
+</ul>
+<p>▶ BETWEEN a AND b: a와 b의 값 사이에 있으면 된다.(a와 b값이 포함됨.)</p>
+<p>▶ IN(list) : 리스트에 있는 값 중에서 어느 하나라도 일치하면 된다.</p>
+<p><a target="_blank" rel="noopener" href="https://www.notion.so/fef2b4f595b24332bcab882015f3fa4b">연산자의 종류</a></p>
+<p>▶ <strong>함수</strong> : 함수는 벤더에서 제공하는 내장함수와 사용자가 정의할 수 있는 함수로 나눌 수 있다.</p>
+<p>내장함수는 다시 단일행 함수, 다중행 함수로 나눠지고, </p>
+<p>다중행 함수는 집계 함수, 그룹 함수, 윈도우 함수로 구분된다.</p>
+<p><strong>&lt;단일형 문자형 함수의 종류&gt;</strong></p>
+<table>
+<thead>
+<tr>
+<th>문자형 함수</th>
+<th>함수 설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LOWER(문자열)</td>
+<td>문자열의 알파벳 문자를 소문자로 바꿔줌.</td>
+</tr>
+<tr>
+<td>UPPER(문자열)</td>
+<td>문자열의 알파벳 문자를 대문자로 바꿔줌.</td>
+</tr>
+<tr>
+<td>ASCII(문자)</td>
+<td>문자나 숫자를 ASCII 코드 번호로 바꿔줌.</td>
+</tr>
+<tr>
+<td>CHR&#x2F;CHAR(ASCII 번호)</td>
+<td>ASCII 코드 번호를 문자나 숫자로 바꿔줌.</td>
+</tr>
+<tr>
+<td>CONCAT(문자열1, 문자열2)</td>
+<td>Oracle,My SQL에서 유효한 함수이며 문자열1과 문자열2를 연결한다. 합성 연산자 ‘</td>
+</tr>
+<tr>
+<td>SUBSTR&#x2F;SUBSTRING(문자열, m[, n ])</td>
+<td>문자열 중 m위치에서 n개의 문자 길이에 해당하는 문자를 돌려준다. n이 생략되면 마지막 문자까지이다.</td>
+</tr>
+<tr>
+<td>LENGTH&#x2F;LEN(문자열)</td>
+<td>문자열의 개수를 숫자값으로 돌려준다.</td>
+</tr>
+<tr>
+<td>LTRIM(문자열[, 지정문자])</td>
+<td>문자열의 첫 문자부터 확인해서 지정 문자가 나타나면 해당 문자를 제거한다.(지정 문자가 생량되면 공백 값이 디폴트)SQL Server에서는 LTRIM 함수에 지정문자를 사용할 수 없다. 즉, 공백만 제거할 수 있다.</td>
+</tr>
+<tr>
+<td>RTRIM(문자열[, 지정문자])</td>
+<td>문자열의 마지막 문자부터 확인해서 지정 문자가 나타나면 해당 문자를 제거한다.(지정 문자가 생량되면 공백 값이 디폴트)SQL Server에서는 LTRIM 함수에 지정문자를 사용할 수 없다. 즉, 공백만 제거할 수 있다.</td>
+</tr>
+<tr>
+<td>TRIM([leading</td>
+<td>trailing</td>
+</tr>
+<tr>
+<td>※ 주석: Oracle함수&#x2F;SQL Server함수 표시,’&#x2F;’ 없는 것은       공통 함수</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>&lt;DUAL 테이블의 특성&gt;</p>
+<ul>
+<li><p>사용자 SYS가 소유하며 모든 사용자가 엑세스 가능한 테이블이다.</p>
+</li>
+<li><p>SELECT ~ FROM ~의 형식을 갖추기 위한 일종의 DUMMY 테이블이다.</p>
+</li>
+<li><p>DUMMY라는 문자열 유형의 칼럼에 ‘X’라는 값이 들어 있는 행을 1건 포함하고 있다.</p>
+</li>
+</ul>
+<p><strong>&lt;단일행 함수의 종류&gt;</strong></p>
+<table>
+<thead>
+<tr>
+<th>종류</th>
+<th>내용</th>
+<th>함수의 예</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>문자형 함수</td>
+<td>문자를 입력하면 문자나 숫자 값을 반환한다.</td>
+<td>LOWER,UPPER,SUB&#x2F;SUBSTRING,LENGTH&#x2F;LEN,LTRIM,RTRIM,TRIM,ASCII…</td>
+</tr>
+<tr>
+<td>숫자형 함수</td>
+<td>숫자를 입력하면 숫자 값을 반환한다.</td>
+<td>ABS,MOD,ROUND,TRUNC,SIGN,CHR&#x2F;CHAR,CEIL&#x2F;CEILING,FLOOR,EXP,LOG,LN,POWER,SIN,COS,TAN</td>
+</tr>
+<tr>
+<td>날짜형 함수</td>
+<td>DATE 타입의 값을 연산한다.</td>
+<td>SYSDATE&#x2F;GETDATE,EXTRACT&#x2F;DATEPART,TO_NUMBER(TO_CHAR(d,‘YYYY’</td>
+</tr>
+<tr>
+<td>변환형 함수</td>
+<td>문자, 숫자, 날짜형 값의 데이터 타입을 반환한다.</td>
+<td>TO_NUMBER,TO_CHAR, TO_DATE &#x2F; CAST, CONVERT</td>
+</tr>
+<tr>
+<td>NULL 관련 함수</td>
+<td>NULL을 처리하기 위한 함수</td>
+<td>NVL&#x2F;ISNULL, NULLIF, COALESCE</td>
+</tr>
+</tbody></table>
+<p><strong>&lt;NULL의 특성&gt;</strong></p>
+<ul>
+<li><p>널 값은 아직 정의되지 않은 값으로 0 또는 공백과는 다르다. 0은 숫자이고, 공백은 하나의 문자이다.</p>
+</li>
+<li><p>테이블을 생성할 때 NOT NULL 또는 PRIMARY KEY로 정의되지 않은 모든 데이터 유형은 널 값을 포함할 수 있다.</p>
+</li>
+<li><p>널 값을 포함하는 연산의 경우 결과 값도 널 값이다. 모르는 데이터에 숫자를 더하거나 빼도 결과는 마찬가지로 모르는 데이터인 것과 같다.</p>
+</li>
+<li><p>결과값을 NULL이 아닌 다른 값을 얻고자 할 때 NVL&#x2F;ISNULL 함수를 사용한다. NULL 값의 대상이 숫자 유형 데이터인 경우는 주로 0(ZERO)으로, 문자 유형 데이터인 경우는 블랭크보다는 ‘x’같이 해당 시스템에서 의미 없는 문자로 바꾸는 경우가 많다.</p>
+</li>
+</ul>
+<p><strong>&lt;단일행 NULL 관련 함수의 종류&gt;</strong></p>
+<table>
+<thead>
+<tr>
+<th>일반형 함수</th>
+<th>함수 설명</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NVL(표현식1, 표현식2) &#x2F; ISNULL(표현식1, 표현식2)</td>
+<td>표현식1의 결과값이 NULL이면 표현식2의 값을 출력한다. 단, 표현식1과 표현식2의 결과 데이터 타입이 같아야 한다. NULL 관련 가장 많이 사용되는 함수여서 상당히 중요하다.</td>
+</tr>
+<tr>
+<td>NULLIF(표현식1, 표현식2)</td>
+<td>표현식1이 표현식2와 같으면 NULL을, 같지 않으면 표현식1을 리턴한다.</td>
+</tr>
+<tr>
+<td>COALESCE(표현식1, 표현식2, …..)</td>
+<td>임의의 개수 표현식에서 NULL이 아닌 최초의 표현식을 나타낸다. 모든 표현식이 NULL이라면 NULL을 리턴한다.</td>
+</tr>
+</tbody></table>
+<p><strong>&lt;NULL 포함 연산의 결과&gt;</strong></p>
+<ul>
+<li><p>NULL + 22 + NULL,</p>
+</li>
+<li><p>NULL - 2, 2 - NULL,</p>
+</li>
+<li><p>NULL * 2, 2 * NULL,</p>
+</li>
+<li><p>NULL &#x2F; 2, 2 &#x2F; NULL   <strong>의 결과는 모두 NULL이다.</strong></p>
+</li>
+</ul>
+<p><strong>&lt;집계함수의 종류&gt;</strong></p>
+<table>
+<thead>
+<tr>
+<th>집계 함수</th>
+<th>사용 목적</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>COUNT(*)</td>
+<td>NULL 값을 포함한 행의 수를 출력한다.</td>
+</tr>
+<tr>
+<td>COUNT(표현식)</td>
+<td>표현식의 값이 NULL값인 것을 제외한 행의 수를 출력한다.</td>
+</tr>
+<tr>
+<td>SUM([DISTINCT</td>
+<td>ALL] 표현식)</td>
+</tr>
+<tr>
+<td>AVG([DISTINCT</td>
+<td>ALL] 표현식)</td>
+</tr>
+<tr>
+<td>MAX([DISTINCT</td>
+<td>ALL] 표현식)</td>
+</tr>
+<tr>
+<td>MIN([DISTINCT</td>
+<td>ALL] 표현식)</td>
+</tr>
+<tr>
+<td>STDDEV([DISTINCT</td>
+<td>ALL] 표현식)</td>
+</tr>
+<tr>
+<td>VARIAN([DISTINCT</td>
+<td>ALL] 표현식)</td>
+</tr>
+<tr>
+<td>기타 통계 함수</td>
+<td>벤더별로 다양한 통계식 제공</td>
+</tr>
+</tbody></table>
+<p><strong>&lt;GROUP BY 문장&gt;</strong></p>
+<p>SELECT  [DISTINCT]</p>
+<p>  칼럼명 [ALIAS 명]</p>
+<p>FROM   테이블명</p>
+<p>[WHERE 조건식]</p>
+<p>[GROUP BY</p>
+<p>   칼럼(Column)이나 표현식]</p>
+<p>[HAVING 그룹조건식];</p>
+<p><strong>&lt;GROUP BY 절과 HAVING 절의 특성&gt;</strong></p>
+<ul>
+<li><p>GROUP BY  절을 통해 소그룹별 기준을 정한 후, SELECT 절에 집계 함수를 사용한다.</p>
+</li>
+<li><p>집계 함수의 통계 정보는 NULL값을 가진 행을 제외하고 수행한다.</p>
+</li>
+<li><p>GROUP BY 절에서는 SELECT 절과는 달리 ALIAS 명을 사용할 수 없다.</p>
+</li>
+<li><p>집계 함수는 WHERE 절에는 올 수 없다. (집계 함수를 사용할 수 있는 GROUP BY 절보다 WHERE 절이 먼저 실행된다.)</p>
+</li>
+<li><p>WHERE 절은 전체 데이터를 GROUP으로 나누기 전에 행들을 미리 제거시킨다.</p>
+</li>
+<li><p>HAVING 절은 GROUP BY 절의 기준 항목이나 소그룹의 집계 함수를 이용한 조건을 표시할 수 있다.</p>
+</li>
+<li><p>GROUP BY 절에 의한 소그룹별로 만들어진 집계 데이터 중, HAVING 절에서 제한 조건을 두어 조건을 만족하는 내용만 출력한다.</p>
+</li>
+<li><p>HAVING 절은 일반적으로 GROUP BY 절 뒤에 위치한다.</p>
+</li>
+</ul>
+<p><strong>&lt;ORDER BY 문장&gt;</strong></p>
+<p>SELECT 칼럼명</p>
+<pre><code>         [ALL AS 명]
+</code></pre>
+<p>FROM   테이블명</p>
+<p>[WHERE 조건식]</p>
+<p>[GROUP BY 칼럼(Column)이나 표현식]</p>
+<p>[HAVING 그룹조건식]</p>
+<p>[ORDER BY 칼럼(Column)이나 표현식[ASC 또는 DESC]];</p>
+<ul>
+<li><p>ASC(Ascending) : 조회한 데이터를 오름차순으로 정렬한다.</p>
+</li>
+<li><p>DESC(Descending) : 조회한 데이터를 내림차순으로 정렬한다.</p>
+</li>
+</ul>
+<p><strong>&lt;ORDER BY 절 특징&gt;</strong></p>
+<ul>
+<li><p>기본적인 정렬 순선는 오름차순(ASC)이다.</p>
+</li>
+<li><p>숫자형 데이터 타입은 오름타순으로 정렬했을 경우에 가장 작은 값부터 출력</p>
+</li>
+<li><p>날짜형 데이터 타입은 오름차순으로 정렬했을 경우 날짜 값이 가장 빠른 값이 먼저 출력된다.</p>
+</li>
+</ul>
+<p>예를 들어 ‘01-JAN-2012’는 ‘01-SEP-2012’보다 먼저 출력된다.</p>
+<ul>
+<li><p>Oracle에서는 NULL 값을 가장 큰 값으로 간주하여 오름차순으로 정렬했을 경우에는 가장 마지막에, 내림차순으로 정렬했을 경우에는 가장 먼저 위치한다.</p>
+</li>
+<li><p>반면, SQL Server에서는 NULL 값을 가장 작은 값으로 간주하여 오름차순으로 정렬했을 경우에는 가장 먼저, 내림차순으로 정렬했을 경우에는 가장 마지막에 위치한다.</p>
+</li>
+</ul>
+<p><strong>&lt;SELECT 문장 실행 순서&gt;</strong></p>
+<ol>
+<li><p>발췌 대상 테이블을 참조한다.(FROM)</p>
+</li>
+<li><p>발췌 대상 데이터가 아닌 것은 제거한다.(WHERE)</p>
+</li>
+<li><p>행들을 소그룹화 한다.(GROUP BY)</p>
+</li>
+<li><p>그룹핑된 값의 조건에 맞는 것만을 출력한다.(HAVING)</p>
+</li>
+<li><p>데이터 값을 출력&#x2F;계산한다. (SELECT)</p>
+</li>
+<li><p>데이터를 정렬한다.(ORDER BY)</p>
+</li>
+</ol>
+<p>[TOP 예제] 사원 테이블에서 급여가 높은 2명을 내림차순으로 출력하는데</p>
+<p>같은 급여를 받는 사원이 있으면 같이 출력하시오.</p>
+<p><strong>SELECT TOP(2) WITH</strong></p>
+<p><strong>TIES ENAME, SAL</strong></p>
+<p><strong>FROM EMP</strong></p>
+<p><strong>ORDER BY SAL DESC;</strong></p>
+<p><strong>&lt;EQUI JOIN 문장&gt;</strong></p>
+<p>SELECT 테이블1.칼럼명,</p>
+<p>테이블2.칼럼명, …..</p>
+<p>FROM  테이블1, 테이블2</p>
+<p>WHERE 테이블1.칼럼명1 &#x3D; 테이블2.칼럼명2;</p>
+<p>—&gt; WHERE 절에 JOIN 조건을 넣는다.</p>
+<p><strong>&lt;ANSI&#x2F;ISO SQL 표준 - EQUI JOIN 문장&gt;</strong></p>
+<p>SELECT 테이블1.칼럼명,</p>
+<p>테이블2.칼럼명, …..</p>
+<p>FROM 테이블1 INNER JOIN 테이블2</p>
+<p>ON 테이블1.칼럼명1 &#x3D; 테이블2.칼럼명2;</p>
+<p>—→ ON 절에 JOIN 조건을 넣는다.</p>
+<p>▶ 두 개 이상의 테이블들을 연결 또는 결합하여 데이터를 출력하는 것을 JOIN이라고 하며,</p>
+<p>일반적인 경우 행들은 PRIMARY KEY(PK)나 FOREIGN KEY(FK) 값의 연관에 의해 JOIN이 성립된다.</p>
+<p>하지만 어떤 경우에는 이러한 PK, FK의 관계가 없어도 논리적인 값들의 연관만으로 </p>
+<p>OIN이 성립 가능하다.</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-02-14T15:00:00.000Z" title="2022. 2. 15. 오전 12:00:00">2022-02-15</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-13T09:55:11.570Z" title="2022. 3. 13. 오후 6:55:11">2022-03-13</time></span><span class="level-item"><a class="link-muted" href="/categories/SQL/">SQL</a></span><span class="level-item">3 minutes read (About 423 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/02/15/postgre%20SQL-practice14/">postgre SQL-practice14</a></h1><div class="content"><p>‘예제 코드’는 여기서 다운 받아 실행하면 된다.</p>
 <p>[‘SQL CODE’](source&#x2F;Lecture&#x2F;sql recipes for data analysis&#x2F;sql recipes for data analysis example code)</p>
 <p>‘데이터 분석을 위한 SQL 레시피’<br>오늘은 ‘10강 - 2.ABC 분석으로 잘 팔리는 상품 판별하기’ 부분을 보고<br>실습을 진행 했다.</p>
 <p>매출 구성비누계와 ABC 등급을 계산하는 쿼리문</p>
@@ -193,25 +895,7 @@
 <p>참고 도서 : 데이터 분석을 위한 SQL 레시피</p>
 <p>저자 : 가나키 나가토, 다미야 나오토</p>
 <p>출판사 : 한빛미디어</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-02-06T15:00:00.000Z" title="2022. 2. 7. 오전 12:00:00">2022-02-07</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-03-13T09:55:11.679Z" title="2022. 3. 13. 오후 6:55:11">2022-03-13</time></span><span class="level-item"><a class="link-muted" href="/categories/SQL/">SQL</a></span><span class="level-item">5 minutes read (About 724 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/02/07/postgre%20SQL-practice4/">postgre SQL-practice4</a></h1><div class="content"><ul>
-<li>‘예제 코드’는 여기서 다운 받아 실행하면 된다.</li>
-</ul>
-<p>[‘SQL CODE’](source&#x2F;Lecture&#x2F;sql recipes for data analysis&#x2F;sql recipes for data analysis example code)</p>
-<p> 어제에 이어서 오늘 오전에<br> ‘데이터 분석을 위한 SQL 레시피’를 보며</p>
-<p> 예제 쿼리문으로 실습을 했다.</p>
-<p>윈도우 함수로 프레임 지정별 상품 ID를<br>집약하는 쿼리문</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">product_id</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 점수 순서로 유일한 순위를 붙임</span><br><span class="line">, ROW_NUMBER() OVER(ORDER BY score DESC) AS row</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 가장 앞 순위부터 가장 뒷 순위까지의 범위를 대상으로 상품 ID 집약하기</span><br><span class="line">-- ■ PostgreSQL의 경우는 array_agg, Hive, SparkSQL의 경우는 collect_list 사용하기</span><br><span class="line">, array_agg(product_id)</span><br><span class="line">-- , collect_list(product_id)</span><br><span class="line">OVER(ORDER BY score DESC</span><br><span class="line">ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)</span><br><span class="line">AS whole_agg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 가장 앞 순위부터 현재 순위까지의 범위를 대상으로 상품 ID 집약하기</span><br><span class="line">-- ■ PostgreSQL의 경우는 array_agg, Hive, SparkSQL의 경우는 collect_list 사용하기</span><br><span class="line">, array_agg(product_id)</span><br><span class="line">-- , collect_list(product_id)</span><br><span class="line">OVER(ORDER BY score DESC</span><br><span class="line">ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW)</span><br><span class="line">AS cum_agg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-- 순위 하나 앞과 하나 뒤까지의 범위를 대상으로 ID 집약하기</span><br><span class="line">-- ■ PostgreSQL의 경우는 array_agg, Hive, SparkSQL의 경우는 collect_list 사용하기</span><br><span class="line">, array_agg(product_id)</span><br><span class="line">-- , collect_list(product_id)</span><br><span class="line">OVER(ORDER BY score DESC</span><br><span class="line">ROWS BETWEEN <span class="number">1</span> PRECEDING AND <span class="number">1</span> FOLLOWING)</span><br><span class="line">AS local_agg</span><br><span class="line">FROM popular_products</span><br><span class="line">WHERE category = <span class="string">&#x27;action&#x27;</span></span><br><span class="line">ORDER BY row</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-<p>윈도우 함수를 사용해 카테고리들의 순위를 계산하는 쿼리문</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">category</span><br><span class="line">, product_id</span><br><span class="line">, score</span><br><span class="line">-- 카테고리별로 점수 순서로 유일한 순위를 붙임</span><br><span class="line">, ROW_NUMBER()</span><br><span class="line">OVER(PARTITION BY category ORDER BY score DESC)</span><br><span class="line">AS row</span><br><span class="line">-- 카테고리별로 같은 순위를 허가하고 순위를 붙임</span><br><span class="line">, RANK()</span><br><span class="line">OVER(PARTITION BY category ORDER BY score DESC)</span><br><span class="line">AS rank</span><br><span class="line">-- 카테고리별로 같은 순위가 있을 때</span><br><span class="line">-- 같은 순위 다음에 있는 순위를 건너 뛰고 순위를 붙임</span><br><span class="line">, DENSE_RANK()</span><br><span class="line">OVER(PARTITION BY category ORDER BY score DESC)</span><br><span class="line">AS dense_rank</span><br><span class="line">FROM popular_products</span><br><span class="line">ORDER BY category, row</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-<p>카테고리들의 순위 상위 2개까지의 상품을 추출하는 쿼리문</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM</span><br><span class="line">-- 서브 쿼리 내부에서 순위 계산하기</span><br><span class="line">( SELECT</span><br><span class="line">  category</span><br><span class="line">  , product_id</span><br><span class="line">  , score</span><br><span class="line">  -- 카테고리별로 점수 순서로 유일한 순위를 붙임</span><br><span class="line">  , ROW_NUMBER()</span><br><span class="line">OVER(PARTITION BY category ORDER BY score DESC)</span><br><span class="line">AS rank</span><br><span class="line">FROM popular_products</span><br><span class="line">) AS popular_products_with_rank</span><br><span class="line">-- 외부 쿼리에서 순위 활용해 압축하기</span><br><span class="line">WHERE rank &lt;= <span class="number">2</span></span><br><span class="line">ORDER BY category, rank</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-<p>카테고리별 순위 최상위 상품을 추출하는 쿼리문</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  -- DISTINCT 구문을 사용해 중복 제거하기</span><br><span class="line">  SELECT DISTINCT</span><br><span class="line">     category</span><br><span class="line">	 -- 카테고리별로 순위 최상위 상품 ID 추출하기</span><br><span class="line">   , FIRST_VALUE(product_id)</span><br><span class="line">      OVER(PARTITION BY category ORDER BY score DESC</span><br><span class="line">	   ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING)</span><br><span class="line">	 AS product_id</span><br><span class="line">  FROM popular_products</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
-<p>[SQL recipes for data analysis](source&#x2F;image&#x2F;sql recipes for data analysis-correction.jpg)</p>
-<p>참고 도서 : 데이터 분석을 위한 SQL 레시피</p>
-<p>저자 : 가나키 나가토, 다미야 나오토</p>
-<p>출판사 : 한빛미디어</p>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/7/">Previous</a></div><div class="pagination-next"><a href="/page/9/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/7/">7</a></li><li><a class="pagination-link is-current" href="/page/8/">8</a></li><li><a class="pagination-link" href="/page/9/">9</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/15/">15</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Jae Won&#039;s Study Room"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jae Won&#039;s Study Room</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">146</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">12</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">128</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Everyday-life-%EC%9D%BC%EC%83%81-%EC%83%9D%ED%99%9C/"><span class="level-start"><span class="level-item">Everyday life (일상 생활)</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/Matplotlib/"><span class="level-start"><span class="level-item">Matplotlib</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/Numpy/"><span class="level-start"><span class="level-item">Numpy</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Pandas/"><span class="level-start"><span class="level-item">Pandas</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Plotly/"><span class="level-start"><span class="level-item">Plotly</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/categories/Python-Machine-Learning/"><span class="level-start"><span class="level-item">Python Machine Learning</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/R/"><span class="level-start"><span class="level-item">R</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/SQL/"><span class="level-start"><span class="level-item">SQL</span></span><span class="level-end"><span class="level-item tag">69</span></span></a></li><li><a class="level is-mobile" href="/categories/SQLD/"><span class="level-start"><span class="level-item">SQLD</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/google-colab/"><span class="level-start"><span class="level-item">google colab</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/kaggle/"><span class="level-start"><span class="level-item">kaggle</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-13T07:02:28.305Z">2022-04-13</time></p><p class="title"><a href="/2022/04/13/postgre%20SQL-practice61/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-11T15:00:00.000Z">2022-04-12</time></p><p class="title"><a href="/2022/04/12/postgre%20SQL-practice60/">postgre SQL-practice60</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-10T15:00:00.000Z">2022-04-11</time></p><p class="title"><a href="/2022/04/11/postgre%20SQL-practice59/">postgre SQL-practice59</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-09T15:00:00.000Z">2022-04-10</time></p><p class="title"><a href="/2022/04/10/postgre%20SQL-practice58/">postgre SQL-practice58</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-08T15:00:00.000Z">2022-04-09</time></p><p class="title"><a href="/2022/04/09/postgre%20SQL-practice57/">postgre SQL-practice57</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">13</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">27</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">43</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">16</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">December 2021</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">November 2021</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">October 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Core-Competencies-as-a-Data-Analyst-YouTube-Kyle-School-Channel/"><span class="tag">Core Competencies as a Data Analyst (YouTube Kyle School Channel)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Feature-Engineering/"><span class="tag">Feature Engineering</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Google-Cloud-Platfrom1-%EA%B5%AC%EA%B8%80-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%94%8C%EB%9E%AB%ED%8F%BC1/"><span class="tag">Google Cloud Platfrom1(구글 클라우드 플랫폼1)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Google-Cloud-Platfrom2-%EA%B5%AC%EA%B8%80-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%94%8C%EB%9E%AB%ED%8F%BC2/"><span class="tag">Google Cloud Platfrom2(구글 클라우드 플랫폼2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Missing-value-%EA%B2%B0%EC%B8%A1%EC%B9%98/"><span class="tag">Missing value (결측치)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Missing-value2-%EA%B2%B0%EC%B8%A1%EC%B9%982/"><span class="tag">Missing value2 (결측치2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Order-Find-outliers-%EC%A3%BC%EB%AC%B8%EA%B3%BC-%EC%9D%B4%EC%83%81%EC%B9%98-%EC%B0%BE%EA%B8%B0/"><span class="tag">Order &amp; Find outliers(주문과 이상치 찾기)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Outlier2-%EC%9D%B4%EC%83%81%EC%B9%982/"><span class="tag">Outlier2 (이상치2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Pie-graph-%EC%9B%90-%EA%B7%B8%EB%9E%98%ED%94%84/"><span class="tag">Pie graph(원 그래프)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Postgre-SQL-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%AC-SQL/"><span class="tag">Postgre SQL (포스트그리 SQL)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Postgre-SQL2-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%AC-SQL2/"><span class="tag">Postgre SQL2(포스트그리 SQL2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Postgre-SQL3-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%AC-SQL3/"><span class="tag">Postgre SQL3 (포스트그리 SQL3)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Postgre-SQL4-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%AC-SQL4/"><span class="tag">Postgre SQL4 (포스트그리 SQL4)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgreSQL-WINDOW-FUNCTION-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%ACSQL-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8E%91%EC%85%98/"><span class="tag">PostgreSQL-WINDOW FUNCTION(포스트그리SQL-윈도우 펑션)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgreSQL-WINDOW-FUNCTION2-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%ACSQL-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8E%91%EC%85%982/"><span class="tag">PostgreSQL-WINDOW FUNCTION2(포스트그리SQL-윈도우 펑션2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgreSQL-WINDOW-FUNCTION3-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%ACSQL-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8E%91%EC%85%983/"><span class="tag">PostgreSQL-WINDOW FUNCTION3(포스트그리SQL-윈도우 펑션3)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python-Virtual-Environments-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD/"><span class="tag">Python Virtual Environments(파이썬 가상환경)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/"><span class="tag">Python 머신러닝</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/R-data-cleaning-method-R-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EC%A0%9C-%EB%B0%A9%EB%B2%95/"><span class="tag">R data cleaning method(&#039;R&#039; 데이터 정제 방법)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/R-Text-Mining1-R-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A7%88%EC%9D%B4%EB%8B%9D1/"><span class="tag">R-Text Mining1(R-텍스트 마이닝1)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/R-Text-Mining2-R-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A7%88%EC%9D%B4%EB%8B%9D2/"><span class="tag">R-Text Mining2(R-텍스트 마이닝2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/R-text-maining3/"><span class="tag">R-text maining3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQL-Recipes-for-Data-Analysis-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D%EC%9D%84-%EC%9C%84%ED%95%9C-SQL-%EB%A0%88%EC%8B%9C%ED%94%BC/"><span class="tag">SQL Recipes for Data Analysis(데이터 분석을 위한 SQL 레시피)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-exam-day/"><span class="tag">SQLD exam day</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-key-theorem/"><span class="tag">SQLD key theorem</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-key-theorem2/"><span class="tag">SQLD key theorem2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-key-theorem3/"><span class="tag">SQLD key theorem3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-key-theorem4/"><span class="tag">SQLD key theorem4</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Scatter-plot-%EC%82%B0%EC%A0%90%EB%8F%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">Scatter plot(산점도) 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/The-day-I-went-to-the-hospital-to-get-a-prescription-%EB%B3%91%EC%9B%90%EC%97%90-%EC%95%BD-%EC%B2%98%EB%B0%A9-%EB%B0%9B%EC%9C%BC%EB%9F%AC-%EA%B0%94%EB%8B%A4%EC%98%A8-%EB%82%A0/"><span class="tag">The day I went to the hospital to get a prescription (병원에 약 처방 받으러 갔다온 날)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Trees-Decision-Tree-about-%EA%B2%B0%EC%A0%95-%ED%8A%B8%EB%A6%AC%EC%97%90-%EB%8C%80%ED%95%B4/"><span class="tag">Trees - Decision Tree about(결정 트리에 대해)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bar-graph1-%EB%A7%89%EB%8C%80%EA%B7%B8%EB%9E%98%ED%94%84/"><span class="tag">bar graph1(막대그래프)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bar-graph2-%EB%A7%89%EB%8C%80%EA%B7%B8%EB%9E%98%ED%94%84/"><span class="tag">bar graph2(막대그래프)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/buy-a-book-%EC%B1%85-%EA%B5%AC%EB%A7%A4/"><span class="tag">buy a book(책 구매)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/buy-ppt-related-books-ppt-%EA%B4%80%EB%A0%A8-%EC%B1%85%EC%9D%84-%EC%82%AC%EB%8B%A4/"><span class="tag">buy ppt related books (ppt 관련 책을 사다)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/class2/"><span class="tag">class2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/craling-4-%ED%81%AC%EB%A1%A4%EB%A7%81-4/"><span class="tag">craling 4 (크롤링 4)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/crawling-basic-%ED%81%AC%EB%A1%A4%EB%A7%81-%EA%B8%B0%EB%B3%B8/"><span class="tag">crawling basic (크롤링 기본)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/crawling2-%ED%81%AC%EB%A1%A4%EB%A7%812/"><span class="tag">crawling2 (크롤링2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/crawling3-%ED%81%AC%EB%A1%A4%EB%A7%813/"><span class="tag">crawling3 (크롤링3)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/extract-kaggle-questions-%EC%BA%90%EA%B8%80-%EC%A7%88%EB%AC%B8-%ED%95%AD%EB%AA%A9-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/"><span class="tag">extract kaggle questions (캐글 질문 항목 출력하기)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hiatogram-colormap-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">hiatogram &amp; colormap 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hitmap-%ED%9E%88%ED%8A%B8%EB%A7%B5-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">hitmap(히트맵) 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/kaggle-house-prices-advanced-regression-techniques/"><span class="tag">kaggle-house-prices-advanced-regression-techniques</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/kaggle-survey-2021/"><span class="tag">kaggle-survey-2021</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/learn-by-myself2-%EC%8A%A4%EC%8A%A4%EB%A1%9C-%ED%84%B0%EB%93%9D%ED%95%9C-%EC%82%AC%EC%8B%A42/"><span class="tag">learn by myself2(스스로 터득한 사실2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/list-comprehension/"><span class="tag">list comprehension</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/machine-learning-evaluation-index-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/"><span class="tag">machine learning evaluation index(머신러닝 평가지표)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/matplotlib-seaborn-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0/"><span class="tag">matplotlib, seaborn 시각화 들어가기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ml-pipeline1-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B81/"><span class="tag">ml pipeline1 (머신러닝 파이프라인1)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ml-pipeline2-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B82/"><span class="tag">ml pipeline2 (머신러닝 파이프라인2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pandas-10-minutes-%ED%8C%90%EB%8B%A4%EC%8A%A4-10%EB%B6%84-%EC%99%84%EC%84%B1/"><span class="tag">pandas 10 minutes(판다스 10분 완성)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pandas-%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95%EA%B3%BC-%ED%95%A8%EC%88%98/"><span class="tag">pandas 기본문법과 함수</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/plotly-express%EC%97%90-%EC%9E%88%EB%8A%94-choropleth-maps-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-%EC%A7%80%EB%8F%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">plotly.express에 있는 choropleth maps 이용해서 지도 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice/"><span class="tag">postgre SQL-practice</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice10/"><span class="tag">postgre SQL-practice10</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice11/"><span class="tag">postgre SQL-practice11</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice12/"><span class="tag">postgre SQL-practice12</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice13/"><span class="tag">postgre SQL-practice13</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice14/"><span class="tag">postgre SQL-practice14</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice15/"><span class="tag">postgre SQL-practice15</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice16/"><span class="tag">postgre SQL-practice16</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice17/"><span class="tag">postgre SQL-practice17</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice18/"><span class="tag">postgre SQL-practice18</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice19/"><span class="tag">postgre SQL-practice19</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice2/"><span class="tag">postgre SQL-practice2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice20/"><span class="tag">postgre SQL-practice20</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice21/"><span class="tag">postgre SQL-practice21</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice22/"><span class="tag">postgre SQL-practice22</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice23/"><span class="tag">postgre SQL-practice23</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice25/"><span class="tag">postgre SQL-practice25</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice26/"><span class="tag">postgre SQL-practice26</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice27/"><span class="tag">postgre SQL-practice27</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice28/"><span class="tag">postgre SQL-practice28</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice29/"><span class="tag">postgre SQL-practice29</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice3/"><span class="tag">postgre SQL-practice3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice30/"><span class="tag">postgre SQL-practice30</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice31/"><span class="tag">postgre SQL-practice31</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice32/"><span class="tag">postgre SQL-practice32</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice33/"><span class="tag">postgre SQL-practice33</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice34/"><span class="tag">postgre SQL-practice34</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice36/"><span class="tag">postgre SQL-practice36</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice37/"><span class="tag">postgre SQL-practice37</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice38/"><span class="tag">postgre SQL-practice38</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice4/"><span class="tag">postgre SQL-practice4</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice40/"><span class="tag">postgre SQL-practice40</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice41/"><span class="tag">postgre SQL-practice41</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice42/"><span class="tag">postgre SQL-practice42</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice43/"><span class="tag">postgre SQL-practice43</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice44/"><span class="tag">postgre SQL-practice44</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice45/"><span class="tag">postgre SQL-practice45</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice46/"><span class="tag">postgre SQL-practice46</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice47/"><span class="tag">postgre SQL-practice47</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice48-extra-edition/"><span class="tag">postgre SQL-practice48 (extra edition)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice49/"><span class="tag">postgre SQL-practice49</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice5/"><span class="tag">postgre SQL-practice5</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice50/"><span class="tag">postgre SQL-practice50</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice51/"><span class="tag">postgre SQL-practice51</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice52/"><span class="tag">postgre SQL-practice52</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice54/"><span class="tag">postgre SQL-practice54</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice55/"><span class="tag">postgre SQL-practice55</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice56/"><span class="tag">postgre SQL-practice56</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice57/"><span class="tag">postgre SQL-practice57</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice58/"><span class="tag">postgre SQL-practice58</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice59/"><span class="tag">postgre SQL-practice59</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice6/"><span class="tag">postgre SQL-practice6</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice60/"><span class="tag">postgre SQL-practice60</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice7/"><span class="tag">postgre SQL-practice7</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice9/"><span class="tag">postgre SQL-practice9</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-pratice39/"><span class="tag">postgre SQL-pratice39</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-pratice8/"><span class="tag">postgre SQL-pratice8</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQl-practice35/"><span class="tag">postgre SQl-practice35</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pyplot-API-object-oriented-API-Pyplot-API-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-API/"><span class="tag">pyplot API+object oriented API (Pyplot API+객체지향 API)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python-def-decorator/"><span class="tag">python def, decorator</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python-text-maining-R/"><span class="tag">python text maining (R)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python-turtle-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%84%B0%ED%8B%80-%EB%AA%A8%EB%93%88-%EC%9D%B4%EC%9A%A9%ED%95%B4-%EC%82%AC%EA%B0%81%ED%98%95-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">python turtle(파이썬 터틀 모듈) 이용해 사각형 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pythonML1-context-manger1/"><span class="tag">pythonML1, context manger1</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python-step02-03-04/"><span class="tag">python_step02,03,04</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/separating-data-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0/"><span class="tag">separating data(데이터 분리하기)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/smart-civil-defense-education-received-day/"><span class="tag">smart civil defense education received day</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/team-PPT/"><span class="tag">team PPT</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/teen-learn/"><span class="tag">teen learn</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/text-mainig-python-machine-learning/"><span class="tag">text mainig python (machine learning)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/through-SQL-recipes-for-data-analysis/"><span class="tag">through SQL recipes for data analysis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/treemap-graph-%ED%8A%B8%EB%A6%AC%EB%A7%B5-%EA%B7%B8%EB%9E%98%ED%94%84/"><span class="tag">treemap graph(트리맵 그래프)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B5%AC%EA%B8%80-%EC%BD%94%EB%9E%A9%EA%B3%BC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%97%B0%EB%8F%99%ED%95%98%EA%B3%A0-%ED%8C%8C%EC%9D%BC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/"><span class="tag">구글 코랩과 드라이브 연동하고 파일 불러오기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%84%98%ED%8C%8C%EC%9D%B4-%EA%B8%B0%EB%B3%B8%ED%95%A8%EC%88%98%EC%99%80-%EC%82%AC%EC%9A%A9%EB%B2%95/"><span class="tag">넘파이 기본함수와 사용법</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%B0%EC%B4%88%EB%AC%B8%EB%B2%95/"><span class="tag">파이썬 기초문법</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="kjw3226-blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 kim Jae Won</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/page/7/">Previous</a></div><div class="pagination-next"><a href="/page/9/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/7/">7</a></li><li><a class="pagination-link is-current" href="/page/8/">8</a></li><li><a class="pagination-link" href="/page/9/">9</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/15/">15</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Jae Won&#039;s Study Room"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Jae Won&#039;s Study Room</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">147</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">12</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">129</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget" data-type="categories"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile" href="/categories/Everyday-life-%EC%9D%BC%EC%83%81-%EC%83%9D%ED%99%9C/"><span class="level-start"><span class="level-item">Everyday life (일상 생활)</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/Matplotlib/"><span class="level-start"><span class="level-item">Matplotlib</span></span><span class="level-end"><span class="level-item tag">6</span></span></a></li><li><a class="level is-mobile" href="/categories/Numpy/"><span class="level-start"><span class="level-item">Numpy</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/Pandas/"><span class="level-start"><span class="level-item">Pandas</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/Plotly/"><span class="level-start"><span class="level-item">Plotly</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/categories/Python/"><span class="level-start"><span class="level-item">Python</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile" href="/categories/Python-Machine-Learning/"><span class="level-start"><span class="level-item">Python Machine Learning</span></span><span class="level-end"><span class="level-item tag">9</span></span></a></li><li><a class="level is-mobile" href="/categories/R/"><span class="level-start"><span class="level-item">R</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/SQL/"><span class="level-start"><span class="level-item">SQL</span></span><span class="level-end"><span class="level-item tag">70</span></span></a></li><li><a class="level is-mobile" href="/categories/SQLD/"><span class="level-start"><span class="level-item">SQLD</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li><li><a class="level is-mobile" href="/categories/google-colab/"><span class="level-start"><span class="level-item">google colab</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li><li><a class="level is-mobile" href="/categories/kaggle/"><span class="level-start"><span class="level-item">kaggle</span></span><span class="level-end"><span class="level-item tag">3</span></span></a></li></ul></div></div></div><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-13T15:00:00.000Z">2022-04-14</time></p><p class="title"><a href="/2022/04/14/postgre%20SQL-practice62/">postgre SQL-practice62</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-13T07:02:28.305Z">2022-04-13</time></p><p class="title"><a href="/2022/04/13/postgre%20SQL-practice61/"> </a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-11T15:00:00.000Z">2022-04-12</time></p><p class="title"><a href="/2022/04/12/postgre%20SQL-practice60/">postgre SQL-practice60</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-10T15:00:00.000Z">2022-04-11</time></p><p class="title"><a href="/2022/04/11/postgre%20SQL-practice59/">postgre SQL-practice59</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-09T15:00:00.000Z">2022-04-10</time></p><p class="title"><a href="/2022/04/10/postgre%20SQL-practice58/">postgre SQL-practice58</a></p><p class="categories"><a href="/categories/SQL/">SQL</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">14</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">27</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/02/"><span class="level-start"><span class="level-item">February 2022</span></span><span class="level-end"><span class="level-item tag">43</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/01/"><span class="level-start"><span class="level-item">January 2022</span></span><span class="level-end"><span class="level-item tag">16</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/12/"><span class="level-start"><span class="level-item">December 2021</span></span><span class="level-end"><span class="level-item tag">18</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/11/"><span class="level-start"><span class="level-item">November 2021</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li><li><a class="level is-mobile" href="/archives/2021/10/"><span class="level-start"><span class="level-item">October 2021</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Core-Competencies-as-a-Data-Analyst-YouTube-Kyle-School-Channel/"><span class="tag">Core Competencies as a Data Analyst (YouTube Kyle School Channel)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Feature-Engineering/"><span class="tag">Feature Engineering</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Google-Cloud-Platfrom1-%EA%B5%AC%EA%B8%80-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%94%8C%EB%9E%AB%ED%8F%BC1/"><span class="tag">Google Cloud Platfrom1(구글 클라우드 플랫폼1)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Google-Cloud-Platfrom2-%EA%B5%AC%EA%B8%80-%ED%81%B4%EB%9D%BC%EC%9A%B0%EB%93%9C-%ED%94%8C%EB%9E%AB%ED%8F%BC2/"><span class="tag">Google Cloud Platfrom2(구글 클라우드 플랫폼2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Missing-value-%EA%B2%B0%EC%B8%A1%EC%B9%98/"><span class="tag">Missing value (결측치)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Missing-value2-%EA%B2%B0%EC%B8%A1%EC%B9%982/"><span class="tag">Missing value2 (결측치2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Order-Find-outliers-%EC%A3%BC%EB%AC%B8%EA%B3%BC-%EC%9D%B4%EC%83%81%EC%B9%98-%EC%B0%BE%EA%B8%B0/"><span class="tag">Order &amp; Find outliers(주문과 이상치 찾기)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Outlier2-%EC%9D%B4%EC%83%81%EC%B9%982/"><span class="tag">Outlier2 (이상치2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Pie-graph-%EC%9B%90-%EA%B7%B8%EB%9E%98%ED%94%84/"><span class="tag">Pie graph(원 그래프)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Postgre-SQL-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%AC-SQL/"><span class="tag">Postgre SQL (포스트그리 SQL)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Postgre-SQL2-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%AC-SQL2/"><span class="tag">Postgre SQL2(포스트그리 SQL2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Postgre-SQL3-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%AC-SQL3/"><span class="tag">Postgre SQL3 (포스트그리 SQL3)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Postgre-SQL4-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%AC-SQL4/"><span class="tag">Postgre SQL4 (포스트그리 SQL4)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgreSQL-WINDOW-FUNCTION-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%ACSQL-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8E%91%EC%85%98/"><span class="tag">PostgreSQL-WINDOW FUNCTION(포스트그리SQL-윈도우 펑션)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgreSQL-WINDOW-FUNCTION2-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%ACSQL-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8E%91%EC%85%982/"><span class="tag">PostgreSQL-WINDOW FUNCTION2(포스트그리SQL-윈도우 펑션2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/PostgreSQL-WINDOW-FUNCTION3-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EA%B7%B8%EB%A6%ACSQL-%EC%9C%88%EB%8F%84%EC%9A%B0-%ED%8E%91%EC%85%983/"><span class="tag">PostgreSQL-WINDOW FUNCTION3(포스트그리SQL-윈도우 펑션3)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python-Virtual-Environments-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B0%80%EC%83%81%ED%99%98%EA%B2%BD/"><span class="tag">Python Virtual Environments(파이썬 가상환경)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Python-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/"><span class="tag">Python 머신러닝</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/R-data-cleaning-method-R-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A0%95%EC%A0%9C-%EB%B0%A9%EB%B2%95/"><span class="tag">R data cleaning method(&#039;R&#039; 데이터 정제 방법)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/R-Text-Mining1-R-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A7%88%EC%9D%B4%EB%8B%9D1/"><span class="tag">R-Text Mining1(R-텍스트 마이닝1)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/R-Text-Mining2-R-%ED%85%8D%EC%8A%A4%ED%8A%B8-%EB%A7%88%EC%9D%B4%EB%8B%9D2/"><span class="tag">R-Text Mining2(R-텍스트 마이닝2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/R-text-maining3/"><span class="tag">R-text maining3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQL-Recipes-for-Data-Analysis-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EC%84%9D%EC%9D%84-%EC%9C%84%ED%95%9C-SQL-%EB%A0%88%EC%8B%9C%ED%94%BC/"><span class="tag">SQL Recipes for Data Analysis(데이터 분석을 위한 SQL 레시피)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-exam-day/"><span class="tag">SQLD exam day</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-key-theorem/"><span class="tag">SQLD key theorem</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-key-theorem2/"><span class="tag">SQLD key theorem2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-key-theorem3/"><span class="tag">SQLD key theorem3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SQLD-key-theorem4/"><span class="tag">SQLD key theorem4</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Scatter-plot-%EC%82%B0%EC%A0%90%EB%8F%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">Scatter plot(산점도) 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/The-day-I-went-to-the-hospital-to-get-a-prescription-%EB%B3%91%EC%9B%90%EC%97%90-%EC%95%BD-%EC%B2%98%EB%B0%A9-%EB%B0%9B%EC%9C%BC%EB%9F%AC-%EA%B0%94%EB%8B%A4%EC%98%A8-%EB%82%A0/"><span class="tag">The day I went to the hospital to get a prescription (병원에 약 처방 받으러 갔다온 날)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Trees-Decision-Tree-about-%EA%B2%B0%EC%A0%95-%ED%8A%B8%EB%A6%AC%EC%97%90-%EB%8C%80%ED%95%B4/"><span class="tag">Trees - Decision Tree about(결정 트리에 대해)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bar-graph1-%EB%A7%89%EB%8C%80%EA%B7%B8%EB%9E%98%ED%94%84/"><span class="tag">bar graph1(막대그래프)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bar-graph2-%EB%A7%89%EB%8C%80%EA%B7%B8%EB%9E%98%ED%94%84/"><span class="tag">bar graph2(막대그래프)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/buy-a-book-%EC%B1%85-%EA%B5%AC%EB%A7%A4/"><span class="tag">buy a book(책 구매)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/buy-ppt-related-books-ppt-%EA%B4%80%EB%A0%A8-%EC%B1%85%EC%9D%84-%EC%82%AC%EB%8B%A4/"><span class="tag">buy ppt related books (ppt 관련 책을 사다)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/class2/"><span class="tag">class2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/craling-4-%ED%81%AC%EB%A1%A4%EB%A7%81-4/"><span class="tag">craling 4 (크롤링 4)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/crawling-basic-%ED%81%AC%EB%A1%A4%EB%A7%81-%EA%B8%B0%EB%B3%B8/"><span class="tag">crawling basic (크롤링 기본)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/crawling2-%ED%81%AC%EB%A1%A4%EB%A7%812/"><span class="tag">crawling2 (크롤링2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/crawling3-%ED%81%AC%EB%A1%A4%EB%A7%813/"><span class="tag">crawling3 (크롤링3)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/extract-kaggle-questions-%EC%BA%90%EA%B8%80-%EC%A7%88%EB%AC%B8-%ED%95%AD%EB%AA%A9-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0/"><span class="tag">extract kaggle questions (캐글 질문 항목 출력하기)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hiatogram-colormap-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">hiatogram &amp; colormap 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/hitmap-%ED%9E%88%ED%8A%B8%EB%A7%B5-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">hitmap(히트맵) 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/kaggle-house-prices-advanced-regression-techniques/"><span class="tag">kaggle-house-prices-advanced-regression-techniques</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/kaggle-survey-2021/"><span class="tag">kaggle-survey-2021</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/learn-by-myself2-%EC%8A%A4%EC%8A%A4%EB%A1%9C-%ED%84%B0%EB%93%9D%ED%95%9C-%EC%82%AC%EC%8B%A42/"><span class="tag">learn by myself2(스스로 터득한 사실2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/list-comprehension/"><span class="tag">list comprehension</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/machine-learning-evaluation-index-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C/"><span class="tag">machine learning evaluation index(머신러닝 평가지표)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/matplotlib-seaborn-%EC%8B%9C%EA%B0%81%ED%99%94-%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0/"><span class="tag">matplotlib, seaborn 시각화 들어가기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ml-pipeline1-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B81/"><span class="tag">ml pipeline1 (머신러닝 파이프라인1)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/ml-pipeline2-%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B82/"><span class="tag">ml pipeline2 (머신러닝 파이프라인2)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pandas-10-minutes-%ED%8C%90%EB%8B%A4%EC%8A%A4-10%EB%B6%84-%EC%99%84%EC%84%B1/"><span class="tag">pandas 10 minutes(판다스 10분 완성)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pandas-%EA%B8%B0%EB%B3%B8%EB%AC%B8%EB%B2%95%EA%B3%BC-%ED%95%A8%EC%88%98/"><span class="tag">pandas 기본문법과 함수</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/plotly-express%EC%97%90-%EC%9E%88%EB%8A%94-choropleth-maps-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-%EC%A7%80%EB%8F%84-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">plotly.express에 있는 choropleth maps 이용해서 지도 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice/"><span class="tag">postgre SQL-practice</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice10/"><span class="tag">postgre SQL-practice10</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice11/"><span class="tag">postgre SQL-practice11</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice12/"><span class="tag">postgre SQL-practice12</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice13/"><span class="tag">postgre SQL-practice13</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice14/"><span class="tag">postgre SQL-practice14</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice15/"><span class="tag">postgre SQL-practice15</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice16/"><span class="tag">postgre SQL-practice16</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice17/"><span class="tag">postgre SQL-practice17</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice18/"><span class="tag">postgre SQL-practice18</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice19/"><span class="tag">postgre SQL-practice19</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice2/"><span class="tag">postgre SQL-practice2</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice20/"><span class="tag">postgre SQL-practice20</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice21/"><span class="tag">postgre SQL-practice21</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice22/"><span class="tag">postgre SQL-practice22</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice23/"><span class="tag">postgre SQL-practice23</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice25/"><span class="tag">postgre SQL-practice25</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice26/"><span class="tag">postgre SQL-practice26</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice27/"><span class="tag">postgre SQL-practice27</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice28/"><span class="tag">postgre SQL-practice28</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice29/"><span class="tag">postgre SQL-practice29</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice3/"><span class="tag">postgre SQL-practice3</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice30/"><span class="tag">postgre SQL-practice30</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice31/"><span class="tag">postgre SQL-practice31</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice32/"><span class="tag">postgre SQL-practice32</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice33/"><span class="tag">postgre SQL-practice33</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice34/"><span class="tag">postgre SQL-practice34</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice36/"><span class="tag">postgre SQL-practice36</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice37/"><span class="tag">postgre SQL-practice37</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice38/"><span class="tag">postgre SQL-practice38</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice4/"><span class="tag">postgre SQL-practice4</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice40/"><span class="tag">postgre SQL-practice40</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice41/"><span class="tag">postgre SQL-practice41</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice42/"><span class="tag">postgre SQL-practice42</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice43/"><span class="tag">postgre SQL-practice43</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice44/"><span class="tag">postgre SQL-practice44</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice45/"><span class="tag">postgre SQL-practice45</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice46/"><span class="tag">postgre SQL-practice46</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice47/"><span class="tag">postgre SQL-practice47</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice48-extra-edition/"><span class="tag">postgre SQL-practice48 (extra edition)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice49/"><span class="tag">postgre SQL-practice49</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice5/"><span class="tag">postgre SQL-practice5</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice50/"><span class="tag">postgre SQL-practice50</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice51/"><span class="tag">postgre SQL-practice51</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice52/"><span class="tag">postgre SQL-practice52</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice54/"><span class="tag">postgre SQL-practice54</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice55/"><span class="tag">postgre SQL-practice55</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice56/"><span class="tag">postgre SQL-practice56</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice57/"><span class="tag">postgre SQL-practice57</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice58/"><span class="tag">postgre SQL-practice58</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice59/"><span class="tag">postgre SQL-practice59</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice6/"><span class="tag">postgre SQL-practice6</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice60/"><span class="tag">postgre SQL-practice60</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice62/"><span class="tag">postgre SQL-practice62</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice7/"><span class="tag">postgre SQL-practice7</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-practice9/"><span class="tag">postgre SQL-practice9</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-pratice39/"><span class="tag">postgre SQL-pratice39</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQL-pratice8/"><span class="tag">postgre SQL-pratice8</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/postgre-SQl-practice35/"><span class="tag">postgre SQl-practice35</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pyplot-API-object-oriented-API-Pyplot-API-%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-API/"><span class="tag">pyplot API+object oriented API (Pyplot API+객체지향 API)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python-def-decorator/"><span class="tag">python def, decorator</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python-text-maining-R/"><span class="tag">python text maining (R)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python-turtle-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%84%B0%ED%8B%80-%EB%AA%A8%EB%93%88-%EC%9D%B4%EC%9A%A9%ED%95%B4-%EC%82%AC%EA%B0%81%ED%98%95-%EA%B7%B8%EB%A6%AC%EA%B8%B0/"><span class="tag">python turtle(파이썬 터틀 모듈) 이용해 사각형 그리기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/pythonML1-context-manger1/"><span class="tag">pythonML1, context manger1</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/python-step02-03-04/"><span class="tag">python_step02,03,04</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/separating-data-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0/"><span class="tag">separating data(데이터 분리하기)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/smart-civil-defense-education-received-day/"><span class="tag">smart civil defense education received day</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/team-PPT/"><span class="tag">team PPT</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/teen-learn/"><span class="tag">teen learn</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/text-mainig-python-machine-learning/"><span class="tag">text mainig python (machine learning)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/through-SQL-recipes-for-data-analysis/"><span class="tag">through SQL recipes for data analysis</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/treemap-graph-%ED%8A%B8%EB%A6%AC%EB%A7%B5-%EA%B7%B8%EB%9E%98%ED%94%84/"><span class="tag">treemap graph(트리맵 그래프)</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EA%B5%AC%EA%B8%80-%EC%BD%94%EB%9E%A9%EA%B3%BC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%97%B0%EB%8F%99%ED%95%98%EA%B3%A0-%ED%8C%8C%EC%9D%BC-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/"><span class="tag">구글 코랩과 드라이브 연동하고 파일 불러오기</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%EB%84%98%ED%8C%8C%EC%9D%B4-%EA%B8%B0%EB%B3%B8%ED%95%A8%EC%88%98%EC%99%80-%EC%82%AC%EC%9A%A9%EB%B2%95/"><span class="tag">넘파이 기본함수와 사용법</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EA%B8%B0%EC%B4%88%EB%AC%B8%EB%B2%95/"><span class="tag">파이썬 기초문법</span><span class="tag">1</span></a></div></div></div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="kjw3226-blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 kim Jae Won</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
